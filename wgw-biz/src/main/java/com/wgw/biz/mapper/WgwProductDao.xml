@@ -26,7 +26,7 @@
         select
           id, name, brand, price, article_number, stock, categoryLevel1Id, categoryLevel12d, fileName, isUp, isnew_product, isnewrecommend, ismoodsrecommend, sales_volume, check_status, Weightgoods
         from wgw.wgw_product
-        where  = #{}
+        where  = #{id}
     </select>
 
     <!--查询指定行数据-->
@@ -153,12 +153,12 @@
                 Weightgoods = #{weightgoods},
             </if>
         </set>
-        where  = #{}
+        where  = #{id}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from wgw.wgw_product where  = #{}
+        delete from wgw.wgw_product where  = #{id}
     </delete>
 
 </mapper>

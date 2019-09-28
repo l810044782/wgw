@@ -22,7 +22,6 @@ public class MybatisPageHelper {
         return findPage(pageRequest,mapper,findPage);
     }
 
-
     @SuppressWarnings({"unchecked","rawtypes"})
     public static PageResult findPage(PageRequest pageRequest,Object mapper,String queryMethodName,Object... args){
         //设置分页参数

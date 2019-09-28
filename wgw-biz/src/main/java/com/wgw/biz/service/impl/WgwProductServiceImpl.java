@@ -27,7 +27,7 @@ public class WgwProductServiceImpl implements WgwProductService {
      */
     @Override
     public WgwProduct queryById(Integer id) {
-        return this.wgwProductDao.queryById();
+        return this.wgwProductDao.queryById(id);
     }
 
     /**
@@ -74,6 +74,6 @@ public class WgwProductServiceImpl implements WgwProductService {
      */
     @Override
     public boolean deleteById(Integer id) {
-        return this.wgwProductDao.deleteById() > 0;
+        return this.wgwProductDao.deleteById(id) > 0;
     }
 }
