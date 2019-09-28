@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/wgw-beans/wgw-beans.iml" filepath="$PROJECT_DIR$/wgw-beans/wgw-beans.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wgw-biz/wgw-biz.iml" filepath="$PROJECT_DIR$/wgw-biz/wgw-biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wgw-daos/wgw-daos.iml" filepath="$PROJECT_DIR$/wgw-daos/wgw-daos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wgw-pom.iml" filepath="$PROJECT_DIR$/wgw-pom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wgw-search/wgw-search.iml" filepath="$PROJECT_DIR$/wgw-search/wgw-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wgw-utils/wgw-utils.iml" filepath="$PROJECT_DIR$/wgw-utils/wgw-utils.iml" />
+    </modules>
+  </component>
+</project>

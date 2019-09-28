@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wgw.biz.dao.CouponDao">
+
+    <resultMap type="com.wgw.biz.entity.Coupon" id="CouponMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="cancommodity" column="cancommodity" jdbcType="INTEGER"/>
+        <result property="usingthreshold" column="usingthreshold" jdbcType="INTEGER"/>
+        <result property="facevalue" column="facevalue" jdbcType="INTEGER"/>
+        <result property="tryplatform" column="Tryplatform" jdbcType="INTEGER"/>
+        <result property="gotime" column="gotime" jdbcType="OTHER"/>
+        <result property="endtime" column="endtime" jdbcType="OTHER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="sum" column="sum" jdbcType="INTEGER"/>
+        <result property="alreadyReceived" column="already_received" jdbcType="INTEGER"/>
+        <result property="toReceive" column="to_receive" jdbcType="INTEGER"/>
+        <result property="haveBeenUsed" column="have_been_used" jdbcType="INTEGER"/>
+        <result property="unused" column="unused" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CouponMap">
+        select
+          id, name, type, cancommodity, usingthreshold, facevalue, Tryplatform, gotime, endtime, status, sum, already_received, to_receive, have_been_used, unused
+        from wgw.coupon
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CouponMap">
+        select
+          id, name, type, cancommodity, usingthreshold, facevalue, Tryplatform, gotime, endtime, status, sum, already_received, to_receive, have_been_used, unused
+        from wgw.coupon
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="CouponMap">
+        select
+          id, name, type, cancommodity, usingthreshold, facevalue, Tryplatform, gotime, endtime, status, sum, already_received, to_receive, have_been_used, unused
+        from wgw.coupon
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="cancommodity != null">
+                and cancommodity = #{cancommodity}
+            </if>
+            <if test="usingthreshold != null">
+                and usingthreshold = #{usingthreshold}
+            </if>
+            <if test="facevalue != null">
+                and facevalue = #{facevalue}
+            </if>
+            <if test="tryplatform != null">
+                and Tryplatform = #{tryplatform}
+            </if>
+            <if test="gotime != null">
+                and gotime = #{gotime}
+            </if>
+            <if test="endtime != null">
+                and endtime = #{endtime}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="sum != null">
+                and sum = #{sum}
+            </if>
+            <if test="alreadyReceived != null">
+                and already_received = #{alreadyReceived}
+            </if>
+            <if test="toReceive != null">
+                and to_receive = #{toReceive}
+            </if>
+            <if test="haveBeenUsed != null">
+                and have_been_used = #{haveBeenUsed}
+            </if>
+            <if test="unused != null">
+                and unused = #{unused}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into wgw.coupon(name, type, cancommodity, usingthreshold, facevalue, Tryplatform, gotime, endtime, status, sum, already_received, to_receive, have_been_used, unused)
+        values (#{name}, #{type}, #{cancommodity}, #{usingthreshold}, #{facevalue}, #{tryplatform}, #{gotime}, #{endtime}, #{status}, #{sum}, #{alreadyReceived}, #{toReceive}, #{haveBeenUsed}, #{unused})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wgw.coupon
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="cancommodity != null">
+                cancommodity = #{cancommodity},
+            </if>
+            <if test="usingthreshold != null">
+                usingthreshold = #{usingthreshold},
+            </if>
+            <if test="facevalue != null">
+                facevalue = #{facevalue},
+            </if>
+            <if test="tryplatform != null">
+                Tryplatform = #{tryplatform},
+            </if>
+            <if test="gotime != null">
+                gotime = #{gotime},
+            </if>
+            <if test="endtime != null">
+                endtime = #{endtime},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="sum != null">
+                sum = #{sum},
+            </if>
+            <if test="alreadyReceived != null">
+                already_received = #{alreadyReceived},
+            </if>
+            <if test="toReceive != null">
+                to_receive = #{toReceive},
+            </if>
+            <if test="haveBeenUsed != null">
+                have_been_used = #{haveBeenUsed},
+            </if>
+            <if test="unused != null">
+                unused = #{unused},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wgw.coupon where id = #{id}
+    </delete>
+
+</mapper>

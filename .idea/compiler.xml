@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="wgw-beans" />
+        <module name="wgw-biz" />
+        <module name="wgw-daos" />
+        <module name="wgw-search" />
+        <module name="wgw-serach" />
+        <module name="wgw-utils" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wgw-admin" target="1.5" />
+      <module name="wgw-beans" target="1.8" />
+      <module name="wgw-biz" target="1.8" />
+      <module name="wgw-commodity" target="1.5" />
+      <module name="wgw-common" target="1.5" />
+      <module name="wgw-core" target="1.5" />
+      <module name="wgw-daos" target="1.8" />
+      <module name="wgw-marketing" target="1.5" />
+      <module name="wgw-order" target="1.5" />
+      <module name="wgw-pom" target="1.8" />
+      <module name="wgw-search" target="1.8" />
+      <module name="wgw-serach" target="1.5" />
+      <module name="wgw-utils" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

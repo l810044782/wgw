@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wgw.biz.dao.WgwUserAddressDao">
+
+    <resultMap type="com.wgw.biz.entity.WgwUserAddress" id="WgwUserAddressMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userid" column="userId" jdbcType="INTEGER"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="createtime" column="createTime" jdbcType="TIMESTAMP"/>
+        <result property="isdefault" column="isDefault" jdbcType="INTEGER"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="WgwUserAddressMap">
+        select
+          id, userId, address, createTime, isDefault, remark
+        from wgw.wgw_user_address
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="WgwUserAddressMap">
+        select
+          id, userId, address, createTime, isDefault, remark
+        from wgw.wgw_user_address
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="WgwUserAddressMap">
+        select
+          id, userId, address, createTime, isDefault, remark
+        from wgw.wgw_user_address
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userid != null">
+                and userId = #{userid}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="createtime != null">
+                and createTime = #{createtime}
+            </if>
+            <if test="isdefault != null">
+                and isDefault = #{isdefault}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into wgw.wgw_user_address(userId, address, createTime, isDefault, remark)
+        values (#{userid}, #{address}, #{createtime}, #{isdefault}, #{remark})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wgw.wgw_user_address
+        <set>
+            <if test="userid != null">
+                userId = #{userid},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime},
+            </if>
+            <if test="isdefault != null">
+                isDefault = #{isdefault},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wgw.wgw_user_address where id = #{id}
+    </delete>
+
+</mapper>

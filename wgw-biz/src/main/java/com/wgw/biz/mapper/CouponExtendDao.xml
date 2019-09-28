@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wgw.biz.dao.CouponExtendDao">
+
+    <resultMap type="com.wgw.biz.entity.CouponExtend" id="CouponExtendMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="couponId" column="coupon_id" jdbcType="INTEGER"/>
+        <result property="couponType" column="coupon_type" jdbcType="VARCHAR"/>
+        <result property="couponName" column="coupon_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CouponExtendMap">
+        select
+          id, coupon_id, coupon_type, coupon_name
+        from wgw.coupon_extend
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CouponExtendMap">
+        select
+          id, coupon_id, coupon_type, coupon_name
+        from wgw.coupon_extend
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="CouponExtendMap">
+        select
+          id, coupon_id, coupon_type, coupon_name
+        from wgw.coupon_extend
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="couponId != null">
+                and coupon_id = #{couponId}
+            </if>
+            <if test="couponType != null and couponType != ''">
+                and coupon_type = #{couponType}
+            </if>
+            <if test="couponName != null and couponName != ''">
+                and coupon_name = #{couponName}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into wgw.coupon_extend(coupon_id, coupon_type, coupon_name)
+        values (#{couponId}, #{couponType}, #{couponName})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wgw.coupon_extend
+        <set>
+            <if test="couponId != null">
+                coupon_id = #{couponId},
+            </if>
+            <if test="couponType != null and couponType != ''">
+                coupon_type = #{couponType},
+            </if>
+            <if test="couponName != null and couponName != ''">
+                coupon_name = #{couponName},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wgw.coupon_extend where id = #{id}
+    </delete>
+
+</mapper>
